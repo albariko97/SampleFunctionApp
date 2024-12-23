@@ -11,7 +11,6 @@ jobs:
     env:
       AZURE_BLOB_URL: "https://edgechwebapps.blob.core.windows.net/dev1"
       FUNCTION_APP_PACKAGE: "SampleFunctionApp.zip"
-      AZURE_FUNCTIONAPP_NAME: 'SampleFunctionApp'
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'  # path to the function app project
       DOTNET_VERSION: '8.0.x'
 
@@ -27,20 +26,24 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     # 3. Build the Application
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: bash
+    - name: 'Build Function App'
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         dotnet publish --configuration Release --output ./output
         popd
 
-    # 4. Verify Artifact Exists
+    # 4. Create Zip Archive
+    - name: Create ZIP File for Deployment
+      run: |
+        cd ./${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output
+        zip -r ../../${{ env.FUNCTION_APP_PACKAGE }} ./*
+
+    # 5. Verify Build Artifact
     - name: Verify Build Artifact
       run: |
-        ls -l ./output
-        mv ./output/* ${{ env.FUNCTION_APP_PACKAGE }}
+        ls -l ${{ env.FUNCTION_APP_PACKAGE }}
 
-    # 5. Upload to Azure Blob Storage
+    # 6. Upload to Azure Blob Storage
     - name: Upload to Azure Blob Storage
       run: |
         curl -X PUT "${{ env.AZURE_BLOB_URL }}/${{ env.FUNCTION_APP_PACKAGE }}?${{ secrets.SAS_TOKEN }}" \
