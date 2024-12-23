@@ -30,14 +30,13 @@ jobs:
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         dotnet publish --configuration Release --output ./output
-        ls
         popd
 
     # 7. Upload to Azure Blob Storage
     - name: Upload to Azure Blob Storage
       run: |
         curl -X PUT "${{ env.AZURE_BLOB_URL }}/${{ env.FUNCTION_APP_PACKAGE }}?${{ secrets.SAS_TOKEN }}" \
-             --upload-file ./${{ env.FUNCTION_APP_PACKAGE }}
+             --upload-file ./output/${{ env.FUNCTION_APP_PACKAGE }}
 
     # # 6. Notify Webhook (Optional)
     # - name: Notify Webhook
