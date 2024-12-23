@@ -32,7 +32,7 @@ jobs:
     - name: Upload to Azure Blob Storage
       run: |
         curl -X PUT "${{ env.AZURE_BLOB_URL }}/${{ env.FUNCTION_APP_PACKAGE }}?${{ secrets.SAS_TOKEN }}" \
-             --upload-file ./publish/webapp.zip
+             --upload-file ./publish/SampleFunctionApp.zip
     # # 5. Notify Webhook (Optional)
     # - name: Notify Webhook
     #   run: |
