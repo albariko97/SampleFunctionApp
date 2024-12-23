@@ -11,23 +11,26 @@ jobs:
     env:
       AZURE_BLOB_URL: "https://edgechwebapps.blob.core.windows.net/dev1"
       FUNCTION_APP_PACKAGE: "SampleFunctionApp.zip"
+      AZURE_FUNCTIONAPP_NAME: 'SampleFunctionApp'   # set this to your function app name on Azure
+      AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'       # set this to the path to your function app project, defaults to the repository root
+      DOTNET_VERSION: '8.0.x'
 
     steps:
-    # 1. Checkout the code
-    - name: Checkout Code
-      uses: actions/checkout@v2
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@v3
 
-    # 2. Setup .NET SDK
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v2
+    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: "8.0.x"  # Adjust to your version
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    # 3. Restore and Build
-    - name: Restore and Build
+    - name: 'Resolve Project Dependencies Using Dotnet'
+      shell: bash
       run: |
-        dotnet restore
-        dotnet publish --configuration Release --output ./publish
+        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        dotnet build --configuration Release --output ./output
+        popd
+        
     # 4. Upload to Azure Blob Storage using SAS URL
     - name: Upload to Azure Blob Storage
       run: |
