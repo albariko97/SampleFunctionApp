@@ -30,20 +30,10 @@ jobs:
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         dotnet publish --configuration Release --output ./output
+        ls
         popd
 
-    # 4. Create Zip Archive
-    - name: Create ZIP File for Deployment
-      run: |
-        cd ./${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output
-        zip -r ../../${{ env.FUNCTION_APP_PACKAGE }} ./*
-
-    # 5. Verify Build Artifact
-    - name: Verify Build Artifact
-      run: |
-        ls -l ${{ env.FUNCTION_APP_PACKAGE }}
-
-    # 6. Upload to Azure Blob Storage
+    # 7. Upload to Azure Blob Storage
     - name: Upload to Azure Blob Storage
       run: |
         curl -X PUT "${{ env.AZURE_BLOB_URL }}/${{ env.FUNCTION_APP_PACKAGE }}?${{ secrets.SAS_TOKEN }}" \
