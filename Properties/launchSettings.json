@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "carrierapp": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7049",
+      "launchBrowser": false
+    }
+  }
+}
