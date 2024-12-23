@@ -1,0 +1,44 @@
+name: Build and Publish Azure Function App
+
+on: 
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    env:
+      AZURE_BLOB_URL: "https://edgechwebapps.blob.core.windows.net/dev1"
+      FUNCTION_APP_PACKAGE: "SampleFunctionApp.zip"
+
+    steps:
+    # 1. Checkout the code
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    # 2. Setup .NET SDK
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: "8.0.x"  # Adjust to your version
+
+    # 3. Restore and Build
+    - name: Restore and Build
+      run: |
+        dotnet restore
+        dotnet publish --configuration Release --output ./publish
+    # 4. Upload to Azure Blob Storage using SAS URL
+    - name: Upload to Azure Blob Storage
+      run: |
+        curl -X PUT "${{ env.AZURE_BLOB_URL }}/${{ env.FUNCTION_APP_PACKAGE }}?${{ secrets.SAS_TOKEN }}" \
+             --upload-file ./publish/webapp.zip
+    # # 5. Notify Webhook (Optional)
+    # - name: Notify Webhook
+    #   run: |
+    #     curl -X POST "https://<YourWebhookUrl>" \
+    #          -H "Content-Type: application/json" \
+    #          -d '{
+    #                "artifactName": "${{ env.FUNCTION_APP_PACKAGE }}",
+    #                "artifactPath": "${{ env.AZURE_BLOB_URL }}/${{ env.FUNCTION_APP_PACKAGE }}?${{ secrets.SAS_TOKEN }}"
+    #              }'
