@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "carrierapp": {
+    "SampleFunctionApp": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7049",
+      "commandLineArgs": "--port 7204",
       "launchBrowser": false
     }
   }

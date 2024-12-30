@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\github repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj": {}
+    "C:\\repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj": {}
   },
   "projects": {
-    "C:\\github repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj": {
+    "C:\\repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\github repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj",
+        "projectUniqueName": "C:\\repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj",
         "projectName": "Microsoft.Azure.Functions.Worker.Extensions",
-        "projectPath": "C:\\github repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj",
+        "projectPath": "C:\\repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj",
         "packagesPath": "C:\\Users\\ayepesbonilla\\.nuget\\packages\\",
-        "outputPath": "C:\\github repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\obj\\",
+        "outputPath": "C:\\repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ayepesbonilla\\AppData\\Roaming\\NuGet\\NuGet.Config",

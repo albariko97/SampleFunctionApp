@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uX3SdX8j9WVIObaDiAwi+CDEvgihawHGXIiRV2466KxZWuBcnKPuIT6Ks2dqbKjwWX3mVOLrp15m0GLlvxzf2w==",
+  "dgSpecHash": "UxYB0PdfgT/eOW4AniQXV9F9km44Uw47EbpS8DfdvoWjN0K+jP0Bes5y2VsmtUqDqXn0aSrCnB/SJXTKxLytvg==",
   "success": true,
-  "projectFilePath": "C:\\github repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj",
+  "projectFilePath": "C:\\repos\\SampleFunctionApp\\obj\\Debug\\net8.0\\WorkerExtensions\\WorkerExtensions.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ayepesbonilla\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.8\\microsoft.aspnet.webapi.client.5.2.8.nupkg.sha512",
     "C:\\Users\\ayepesbonilla\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

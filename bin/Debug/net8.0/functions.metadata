@@ -1,8 +1,8 @@
 [
   {
-    "name": "CustomApp",
-    "scriptFile": "carrierapp.dll",
-    "entryPoint": "Carrier.Function.CustomApp.Run",
+    "name": "SampleFunction",
+    "scriptFile": "SampleFunctionApp.dll",
+    "entryPoint": "SampleFunctionApp.Function.Run",
     "language": "dotnet-isolated",
     "properties": {
       "IsCodeless": false
@@ -12,7 +12,7 @@
         "name": "req",
         "direction": "In",
         "type": "httpTrigger",
-        "authLevel": "Anonymous",
+        "authLevel": "Function",
         "methods": [
           "get",
           "post"

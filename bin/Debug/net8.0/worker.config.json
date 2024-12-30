@@ -3,7 +3,7 @@
     "language": "dotnet-isolated",
     "extensions": [ ".dll" ],
     "defaultExecutablePath": "dotnet",
-    "defaultWorkerPath": "carrierapp.dll",
+    "defaultWorkerPath": "SampleFunctionApp.dll",
     "workerIndexing": "true",
     "canUsePlaceholder": true
   }
