@@ -36,19 +36,34 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
+    # Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore
+    # Build the project
+    - name: Build the project
+      run: dotnet build --configuration Release
+      
     # 3. Build the Application
-    - name: 'Build Function App'
+    # - name: 'Build Function App'
+    #   run: |
+    #     pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+    #     dotnet publish --configuration Release --output ./output
+    #     popd
+        
+    # Publish the project
+    - name: Publish the project
+      run: dotnet publish --configuration Release --output ./publish
+    # Zip the published files
+    - name: Create ZIP package
       run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet publish --configuration Release --output ./output
-        popd
-
-    # Step 4: Create a zip package of the build artifacts
-    - name: Create ZIP Package
-      run: |
-        cd ./output
-        zip -r ../${{ env.FUNCTION_APP_PACKAGE }} ./*
-        cd ..
+          cd ./publish
+          zip -r ../${{ env.FUNCTION_APP_PACKAGE }} .
+    # # Step 4: Create a zip package of the build artifacts
+    # - name: Create ZIP Package
+    #   run: |
+    #     cd ./output
+    #     zip -r ../${{ env.FUNCTION_APP_PACKAGE }} ./*
+    #     cd ..
 
     # Step 5: Verify the ZIP file
     - name: Verify ZIP File
