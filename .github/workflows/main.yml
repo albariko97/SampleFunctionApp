@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      AZURE_BLOB_URL: "https://edgechwebapps.blob.core.windows.net/dev1"
+      AZURE_BLOB_URL: "https://edgechwebapps.blob.core.windows.net/1dev"
       FUNCTION_APP_PACKAGE: "SampleFunctionApp.zip"
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'  # path to the function app project
       DOTNET_VERSION: '8.0.x'
